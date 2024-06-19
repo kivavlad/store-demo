@@ -1,0 +1,18 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  padding: 40px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 300px;
+  width: 100%;
+}
+
+button {
+  width: 140px;
+}

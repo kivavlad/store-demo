@@ -1,0 +1,52 @@
+.wrapper {
+  display: flex;
+  gap: 80px;
+  padding: 40px;
+}
+
+.image {
+  width: 380px;
+  height: auto;
+}
+
+.image img {
+  width: 380px;
+  height: auto;
+  object-fit: cover;
+}
+
+.text_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.text span, .price span {
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.text {
+  font-size: 18px;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.text_wrapper a {
+  border: 1px solid gray;
+  padding: 4px 12px;
+  font-size: 16px;
+  text-align: center;
+  margin-top: auto;
+  width: 120px;
+  transition: .2s ease;
+}
+
+.text_wrapper a:hover {
+  background-color: gray;
+  color: white;
+}
