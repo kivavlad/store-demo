@@ -26,7 +26,7 @@ const Edit: React.FC = () => {
   const [image, setImage] = useState<string>(currentProduct?.image || '');
 
   const callbacks = {
-    onCreate: useCallback(() => {
+    onEdit: useCallback(() => {
       if (title.trim() && description.trim() && price.trim() && category.trim() && image.trim()) {
         dispatch(editProduct({
           id: Number(id), 
@@ -49,7 +49,7 @@ const Edit: React.FC = () => {
     <PageLayout>
       <Head title="Edit product"/>
       <Navigation/>
-      <Form onSubmit={callbacks.onCreate}>
+      <Form onSubmit={callbacks.onEdit}>
         <Input label="Title" type='text' placeholder="Enter title" value={title} setValue={setTitle}/>
         <Textarea label="Description" placeholder="Enter description" value={description} setValue={setDescription}/>
         <Input label="Image url" type='text' placeholder="Enter image url" value={image} setValue={setImage}/>
