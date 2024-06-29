@@ -8,6 +8,7 @@ interface IState {
     limit: number;
     category: string;
   };
+  count: number;
   error: boolean;
   waiting: boolean;
 }
@@ -19,6 +20,7 @@ const initialState: IState = {
     limit: 10,
     category: '',
   },
+  count: 20,
   error: false,
   waiting: false
 }
@@ -39,7 +41,7 @@ const productsSlice = createSlice({
   reducers: {
     // Установка новых параметров в limit
     setLimit(state, action: PayloadAction<number>) {
-      state.param.limit = action.payload;
+      state.param.limit = state.param.limit + action.payload;
     },
 
     // Установка новых параметров в category
