@@ -15,6 +15,7 @@ const initialState: IState = {
     description: '',
     price: '',
     image: '',
+    amount: 0,
   },
   error: false,
   waiting: false
@@ -43,6 +44,7 @@ const productsSlice = createSlice({
           description: '',
           price: '',
           image: '',
+          amount: 0,
         },
         state.error = false;
         state.waiting = true;
