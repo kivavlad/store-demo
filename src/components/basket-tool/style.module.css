@@ -1,0 +1,11 @@
+.wrapper {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 0;
+  font-size: 18px;
+}
+
+.total {
+  font-weight: bold;
+  margin: 0 20px;
+}

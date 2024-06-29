@@ -1,19 +1,19 @@
 import {memo} from "react";
 import {Link} from "react-router-dom";
-import {IProduct} from "../../types/i-product";
 import {numberFormat} from "../../utils/utils";
+import {IProduct} from "../../types/i-product";
 import styles from "./style.module.css";
 
 interface IProps {
   item: IProduct;
   link: string;
-  onAdd: (item: IProduct) => void;
+  onRemove: (item: IProduct) => void;
 }
 
-const ProductCard: React.FC<IProps> = ({item, link, onAdd}) => {
+const ProductBasket: React.FC<IProps> = ({item, link, onRemove}) => {
 
   const callbacks = {
-    onAdd: () => onAdd(item),
+    onRemove: () => onRemove(item),
   }
 
   return (
@@ -27,11 +27,12 @@ const ProductCard: React.FC<IProps> = ({item, link, onAdd}) => {
         </div>
       </div>
       <div className={styles.actions}>
-        <div className={styles.price}>${numberFormat(Number(item.price))}</div>
-        <button onClick={callbacks.onAdd}>Add</button>
+        <div className={styles.cell}>${numberFormat(Number(item.price))}</div>
+        <div className={styles.cell}>{numberFormat(Number(item.amount)) || 0} pcs.</div>
+        <button onClick={callbacks.onRemove}>Remove</button>
       </div>
     </div>
   )
 }
 
-export default memo(ProductCard);
+export default memo(ProductBasket);

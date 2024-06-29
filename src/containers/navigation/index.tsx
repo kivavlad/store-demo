@@ -1,30 +1,24 @@
-import {memo, useEffect, useCallback} from "react";
+import {memo, useCallback} from "react";
 import {useAppDispatch} from "../../hooks/use-dispatch";
 import {useAppSelector} from "../../hooks/use-selector";
-import {loadCategories} from "../../store/reducers/categories";
-import {setCategory} from "../../store/reducers/products";
+import {open} from "../../store/reducers/modals";
+import SideLayout from "../../components/side-layout";
 import NavMenu from "../../components/nav-menu";
-import Select from "../../components/select";
-import styles from "./style.module.css";
+import BasketTool from "../../components/basket-tool";
 
 const Navigation: React.FC = () => {
   const dispatch = useAppDispatch();
-  const {param} = useAppSelector(state => state.products);
-  const {list} = useAppSelector(state => state.categories);
-
-  useEffect(() => {
-    dispatch(loadCategories());
-  }, [])
+  const {amount, sum} = useAppSelector(state => state.cart);
 
   const callbacks = {
-    setValue: useCallback((value: string) => dispatch(setCategory(value)), []),
+    onOpen: useCallback(() => dispatch(open('cart')), [])
   }
-
+  
   return (
-    <div className={styles.wrapper}>
+    <SideLayout>
       <NavMenu/>
-      <Select value={param.category} setValue={callbacks.setValue} options={list}/>
-    </div>
+      <BasketTool amount={amount} sum={sum} onOpen={callbacks.onOpen}/>
+    </SideLayout>
   )
 }
 

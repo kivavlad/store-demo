@@ -5,12 +5,12 @@
 }
 
 .image {
-  width: 380px;
-  height: auto;
+  width: 500px;
+  overflow: hidden;
 }
 
 .image img {
-  width: 380px;
+  width: 100%;
   height: auto;
   object-fit: cover;
 }
@@ -49,4 +49,8 @@
 .text_wrapper a:hover {
   background-color: gray;
   color: white;
+}
+
+.btn {
+  width: 100px;
 }

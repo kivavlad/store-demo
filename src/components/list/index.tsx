@@ -10,9 +10,11 @@ interface IProps {
 const List: React.FC<IProps> = ({list, renderItems}) => {
   return (
     <div className={styles.list}>{
-      list.map(item => (
-        renderItems(item)
-      ))}
+      list.map(item =>
+        <div key={item.id} className={styles.item}>
+          {renderItems(item)}
+        </div>
+      )}
     </div>
   )
 }

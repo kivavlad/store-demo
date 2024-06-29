@@ -16,7 +16,7 @@ const initialState: IState = {
   list: [],
   new_products: [],
   param: {
-    limit: 8,
+    limit: 10,
     category: '',
   },
   error: false,
@@ -47,21 +47,6 @@ const productsSlice = createSlice({
       state.param.category = action.payload;
     },
 
-    // Создание нового продукта
-    createProduct(state, action: PayloadAction<IProduct>) {
-      state.new_products.push(action.payload);
-    },
-
-    // Редактирование продукта
-    editProduct(state, action: PayloadAction<IProduct>) {
-      state.new_products = state.new_products.map((item) => {
-        if (item.id === action.payload.id) {
-          return action.payload;
-        } 
-        return item;
-      })
-    }
-
   },
   extraReducers(builder) {
     builder
@@ -82,6 +67,6 @@ const productsSlice = createSlice({
   },
 })
 
-export const {setLimit, setCategory, createProduct, editProduct} = productsSlice.actions;
+export const {setLimit, setCategory} = productsSlice.actions;
 export default productsSlice.reducer;
 

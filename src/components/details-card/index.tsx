@@ -1,14 +1,20 @@
 import {memo} from "react";
-import {Link} from "react-router-dom";
 import {IProduct} from "../../types/i-product";
 import styles from "./style.module.css";
 
 interface IProps {
   product: IProduct | undefined;
-  link?: string; 
+  onAdd: (item: IProduct) => void;
 }
 
-const DetailsCard: React.FC<IProps> = ({product, link}) => {
+const DetailsCard: React.FC<IProps> = ({product, onAdd}) => {
+
+  const callbacks = {
+    onAdd: () => {
+      if (product) onAdd(product);
+    }
+  }
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.image}>
@@ -27,9 +33,7 @@ const DetailsCard: React.FC<IProps> = ({product, link}) => {
           <span>Price:</span> 
           {product && <>${product.price}</>}
         </div>
-        {link && 
-          <Link to={link}>Edit</Link>
-        }
+        <button className={styles.btn} onClick={callbacks.onAdd}>Add</button>
       </div>
     </div>
   )

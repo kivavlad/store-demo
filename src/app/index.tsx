@@ -1,21 +1,21 @@
 import {Routes, Route} from "react-router-dom";
+import {useAppSelector} from "../hooks/use-selector";
 import Main from "./main";
-import NewProducts from "./new-products";
 import Details from "./details";
-import NewProductDetails from "./newproduct-details";
-import Create from "./create";
-import Edit from "./edit";
+import Cart from "./cart";
 
 const App: React.FC = () => {
+  const {name} = useAppSelector(state => state.modals);
+  
   return (
-    <Routes>
-      <Route path="/" element={<Main/>}/>
-      <Route path="/new-products" element={<NewProducts/>}/>
-      <Route path="/product/:id" element={<Details/>}/>
-      <Route path="/new-product/:id" element={<NewProductDetails/>}/>
-      <Route path="/create" element={<Create/>}/>
-      <Route path="/edit/:id" element={<Edit/>}/>
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/" element={<Main/>}/>
+        <Route path="/product/:id" element={<Details/>}/>
+      </Routes>
+
+      {name === 'cart' && <Cart/>}
+    </>
   )
 }
 
