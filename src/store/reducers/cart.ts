@@ -18,7 +18,7 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
 
-    // Добавление продукта в корзину
+    // Добавление в корзину
     addInCart(state, action: PayloadAction<IProduct>) {
       let sum = 0;
       // Ищем товар в корзине, чтобы увеличить его количество

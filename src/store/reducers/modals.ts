@@ -1,11 +1,11 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 interface IState {
-  name: string | null;
+  activeModal: string;
 }
 
 const initialState: IState = {
-  name: null,
+  activeModal: '',
 } 
 
 const modalsSlice = createSlice({
@@ -13,11 +13,11 @@ const modalsSlice = createSlice({
   initialState,
   reducers: {
     open(state, action: PayloadAction<string>) {
-      state.name = action.payload;
+      state.activeModal = action.payload;
     },
 
     close(state) {
-      state.name = null;
+      state.activeModal = '';
     }
   },
 })

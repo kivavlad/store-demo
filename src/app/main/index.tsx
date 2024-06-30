@@ -5,6 +5,7 @@ import {load} from "../../store/reducers/products";
 import PageLayout from "../../components/page-layout";
 import Head from "../../components/head";
 import Navigation from "../../containers/navigation";
+import CatalogFilter from "../../containers/catalog-filter";
 import CatalogList from "../../containers/catalog-list";
 
 const Main: React.FC = () => {
@@ -22,6 +23,7 @@ const Main: React.FC = () => {
     <PageLayout>
       <Head title="Store"/>
       <Navigation/>
+      <CatalogFilter/>
       <CatalogList/>
     </PageLayout>
   )

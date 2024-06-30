@@ -48,7 +48,7 @@ const CatalogList: React.FC = () => {
     return function() {
       window.removeEventListener('scroll', scrollHandler);
     }
-  }, [])
+  }, [list])
 
   return (
     <Loader active={waiting}>

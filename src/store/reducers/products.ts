@@ -3,33 +3,39 @@ import {IProduct} from "../../types/i-product";
 
 interface IState {
   list: IProduct[];
-  new_products: IProduct[];
   param: {
     limit: number;
     category: string;
+    sort: string;
   };
   count: number;
   error: boolean;
   waiting: boolean;
 }
 
+interface IApiParams {
+  limit: number;
+  category?: string;
+  sort?: string;
+}
+
 const initialState: IState = {
   list: [],
-  new_products: [],
   param: {
     limit: 10,
     category: '',
+    sort: '',
   },
-  count: 20,
+  count: 20, // Количетво продуктов, тк из бэка это поле не приходит
   error: false,
   waiting: false
 }
 
 // Получение списка продуктов
-export const load = createAsyncThunk<IProduct[], {limit: number, category: string}>(
+export const load = createAsyncThunk<IProduct[], IApiParams>(
   'products/load',
-  async function({limit, category}) {
-    const response = await fetch(`https://fakestoreapi.com/products/${category}?limit=${limit}`)
+  async function(params) {
+    const response = await fetch(`https://fakestoreapi.com/products/${params.category}?limit=${params.limit}&${params.sort}`)
     const data = await response.json();
     return data;
   }
@@ -48,6 +54,17 @@ const productsSlice = createSlice({
     setCategory(state, action: PayloadAction<string>) {
       state.param.category = action.payload;
     },
+
+    // Установка новых параметров в sort
+    setSort(state, action: PayloadAction<string>) {
+      state.param.sort = action.payload;
+    },
+
+    // Сброс всех параметров
+    resetParams(state) {
+      state.param.sort = '';
+      state.param.category = '';
+    }
 
   },
   extraReducers(builder) {
@@ -69,6 +86,6 @@ const productsSlice = createSlice({
   },
 })
 
-export const {setLimit, setCategory} = productsSlice.actions;
+export const {setLimit, setCategory, setSort, resetParams} = productsSlice.actions;
 export default productsSlice.reducer;
 

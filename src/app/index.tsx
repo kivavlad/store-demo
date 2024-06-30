@@ -5,7 +5,7 @@ import Details from "./details";
 import Cart from "./cart";
 
 const App: React.FC = () => {
-  const {name} = useAppSelector(state => state.modals);
+  const {activeModal} = useAppSelector(state => state.modals);
   
   return (
     <>
@@ -14,7 +14,7 @@ const App: React.FC = () => {
         <Route path="/product/:id" element={<Details/>}/>
       </Routes>
 
-      {name === 'cart' && <Cart/>}
+      {activeModal === 'cart' && <Cart/>}
     </>
   )
 }

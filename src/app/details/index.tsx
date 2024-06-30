@@ -17,6 +17,7 @@ const Details: React.FC = () => {
   const {id} = useParams();
 
   const callbacks = {
+    // Добавление в корзину
     onAdd: useCallback((item: IProduct) => dispatch(addInCart(item)), []),
   }
 
