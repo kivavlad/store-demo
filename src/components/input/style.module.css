@@ -2,9 +2,14 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  width: 300px;
 }
 
 .wrapper label {
   font-size: 18px;
   font-weight: bold;
+}
+
+.wrapper > input {
+  width: 100%;
 }

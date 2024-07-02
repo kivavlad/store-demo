@@ -15,7 +15,7 @@ const Main: React.FC = () => {
   useEffect(() => {
     dispatch(load({
       limit: param.limit, 
-      category: param.category && `category/${param.category}`
+      category: param.category && `category/${param.category}`,
     }));
   }, [param.limit, param.category])
 
